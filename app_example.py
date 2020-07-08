@@ -39,7 +39,7 @@ def trigger_rerun():
 
 input_data = pd.read_csv(config.input_data_file, sep='\t', index_col='item_id', error_bad_lines=False)
 tagged_data = pd.read_csv(config.tagged_data_file, sep='\t', index_col='item_id')
-st.write(pd.crosstab(index=tagged_data.product_type, columns=tagged_data.att_value, margins=True))
+
 try:
     item_data = input_data[~input_data.index.isin(tagged_data.index)].iloc[0,:]
     st.image(item_data.url, width=600, caption=item_data.name)
